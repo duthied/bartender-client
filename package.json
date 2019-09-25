@@ -22,7 +22,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "run:ios-demo": "npx artillery run apollo-internal-demos/ios-workload.yml"
+    "run:ios-demo": "npx artillery run apollo-internal-demos/ios-workload.yml",
+    "pretty": "prettier --write --tab-width 4 \"src/**/*.js\""
+  },
+  "lint-staged": {
+      "*.js": [
+          "npm run pretty",
+          "git add"
+      ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +45,16 @@
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.7",
     "apollo": "^2.16.3",
-    "artillery": "^1.6.0-26"
+    "artillery": "^1.6.0-26",
+    "husky": "^3.0.5",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.3.0",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pretty",
+      "pre-push": "npm run pretty"
+    }
   }
 }
