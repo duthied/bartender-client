@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 // import { Router } from '@reach/router';
 
 // import Launch from './launch';
@@ -8,9 +8,9 @@ import React, { Fragment } from 'react';
 // import { Footer, PageContainer } from '../components';
 
 export default function Pages() {
-  return (
-    <Fragment>
-      {/* <PageContainer>
+    return (
+        <Fragment>
+            {/* <PageContainer>
           navigation below
         <Router primary={false} component={Fragment}>
           <Launches path="/" />
@@ -20,6 +20,6 @@ export default function Pages() {
         </Router>
       </PageContainer>
       <Footer /> */}
-    </Fragment>
-  );
+        </Fragment>
+    );
 }

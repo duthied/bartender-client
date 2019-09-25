@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
 // import { ApolloClient } from 'apollo-client';
 // import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 // import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
 
-import Pages from './pages';
+import Pages from "./pages";
 // import { resolvers, typeDefs } from './resolvers';
 // import injectStyles from './styles';
 
@@ -51,15 +51,15 @@ import Pages from './pages';
 // `;
 
 function IsLoggedIn() {
-//   const { data } = useQuery(IS_LOGGED_IN);
-//   return data.isLoggedIn ? <Pages /> : <Login />;
+    //   const { data } = useQuery(IS_LOGGED_IN);
+    //   return data.isLoggedIn ? <Pages /> : <Login />;
     return <Pages />;
 }
 
 // injectStyles();
 ReactDOM.render(
-//   <ApolloProvider client={client}>
+    //   <ApolloProvider client={client}>
     <IsLoggedIn />,
-//   </ApolloProvider>,
-  document.getElementById('root'),
+    //   </ApolloProvider>,
+    document.getElementById("root")
 );
