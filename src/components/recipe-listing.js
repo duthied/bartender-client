@@ -1,20 +1,20 @@
 import React, { Fragment } from "react";
 import styled from "react-emotion";
 
-import { unit, colors } from '../styles';
-import ListingTitle from './listing-title';
+import { unit, colors } from "../styles";
+import ListingTitle from "./listing-title";
 
-const listingTitle = 'Recipes';
-const listingTarget = 'recipes';
+const listingTitle = "Recipes";
+const listingTarget = "recipes";
 
 export default function RecipeListing() {
-  return (
-    <Fragment>
-      <Container>
-        <ListingTitle to={listingTarget} title={listingTitle} />
-      </Container>
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <Container>
+                <ListingTitle to={listingTarget} title={listingTitle} />
+            </Container>
+        </Fragment>
+    );
 }
 
 const Container = styled("div")({

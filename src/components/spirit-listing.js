@@ -1,19 +1,19 @@
 import React, { Fragment } from "react";
 import styled from "react-emotion";
 import { unit, colors } from "../styles";
-import ListingTitle from './listing-title';
+import ListingTitle from "./listing-title";
 
-const listingTitle = 'Spirits';
-const listingTarget = 'spirits';
+const listingTitle = "Spirits";
+const listingTarget = "spirits";
 
 export default function SpiritListing() {
-  return (
-    <Fragment>
-      <Container>
-        <ListingTitle to={listingTarget} title={listingTitle} />
-      </Container>
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <Container>
+                <ListingTitle to={listingTarget} title={listingTitle} />
+            </Container>
+        </Fragment>
+    );
 }
 
 const Container = styled("div")({
