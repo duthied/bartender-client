@@ -1,20 +1,16 @@
-import React, { Fragment } from 'react';
-import styled from 'react-emotion';
+import React, { Fragment } from "react";
+import styled from "react-emotion";
 
-import { unit, colors } from '../styles';
+import { unit, colors } from "../styles";
 
 export default function PageContainer(props) {
-  return (
-    <Fragment>
-      <Bar />
-      <Container>{props.children}</Container>
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <Bar />
+            <Container>{props.children}</Container>
+        </Fragment>
+    );
 }
-
-/**
- * STYLED COMPONENTS USED IN THIS FILE ARE BELOW HERE
- */
 
 const Bar = styled("div")({
     flexShrink: 0,
@@ -27,7 +23,7 @@ const Container = styled("div")({
     flexDirection: "column",
     flexGrow: 1,
     width: "100%",
-    maxWidth: 600,
+    maxWidth: 800,
     margin: "0 auto",
     padding: unit * 3,
     paddingBottom: unit * 5

@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { SpiritListing, RecipeListing } from '../components';
+import React, { Fragment } from "react";
+import { SpiritListing, RecipeListing } from "../components";
 
 export default function Listings() {
-  return (
-    <Fragment>
-      <SpiritListing />
-      <RecipeListing />
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <SpiritListing />
+            <RecipeListing />
+        </Fragment>
+    );
 }

@@ -22,6 +22,7 @@ export default function Header(props) {
 const Container = styled("div")({
     display: "flex",
     alignItems: "center",
-    marginBottom: unit * 4.5,
-    marginLeft: unit * 1
+    marginBottom: unit * 3.5,
+    marginLeft: unit * 2,
+    marginTop: unit * 2
 });
