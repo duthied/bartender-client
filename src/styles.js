@@ -7,8 +7,11 @@ export const colors = {
   accent: "#CAB7FB",
   background: "#f7f8fa",
   grey: "#d8d9e0",
+  lightGrey: "#ABB2B9",
   text: "#343c5a",
-  textSecondary: "#747790"
+  textSecondary: "#747790",
+  inactive: "#ABB2B9",
+  active: "#000000"
 };
 
 export default () =>
