@@ -48,23 +48,7 @@ export default function RecipeListing() {
         <ListingTitle to={listingTarget} title={listingTitle} />
         {data.recipes &&
           data.recipes.map(recipe => (
-            <RecipeDetail recipe={recipe} />
-
-            // <RecipeTile key={recipe.id}>
-            //   <RecipeTitle>{recipe.name}</RecipeTitle>
-            //   <RecipeBody>
-            //     Spirits:
-            //     <Ingredients>
-            //       {recipe.ingredients.map(ingredient => (
-            //         <Fragment key={ingredient.spirit.name}>
-            //           {ingredient.spirit.name}
-            //           <br />
-            //         </Fragment>
-            //       ))}
-            //     </Ingredients>
-            //     Glass: {recipe.glass}
-            //   </RecipeBody>
-            // </RecipeTile>
+            <RecipeDetail  key={recipe.id} recipe={recipe} />
           ))}
       </Container>
     </Fragment>

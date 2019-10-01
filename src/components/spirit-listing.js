@@ -43,7 +43,7 @@ export default function SpiritListing() {
       <Container>
         <ListingTitle to={listingTarget} title={listingTitle} />
         {data.spirits &&
-          data.spirits.map(spirit => <SpiritDetail spirit={spirit} />)}
+          data.spirits.map(spirit => <SpiritDetail key={spirit.id} spirit={spirit} />)}
       </Container>
     </Fragment>
   );

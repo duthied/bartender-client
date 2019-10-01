@@ -21,7 +21,23 @@ const menuItemClassName = css({
   paddingLeft: unit * 5
 });
 
+const titleItemClassName = css({
+  flexGrow: 1,
+  width: 0,
+  fontFamily: "inherit",
+  fontSize: 30,
+  fontWeight: "bold",
+  letterSpacing: 1.5,
+  textTransform: "uppercase",
+  color: "black",
+  paddingLeft: unit * 5
+});
+
 const MenuItemLink = styled(Link)(menuItemClassName, {
+  textDecoration: "none"
+});
+
+const TitleItemLink = styled(Link)(titleItemClassName, {
   textDecoration: "none"
 });
 
@@ -34,6 +50,19 @@ export const NavLink = props => (
           textDecoration: isPartiallyCurrent ? "none" : "underline",
           color: isPartiallyCurrent ? colors.active : colors.inactive,
           cursor: isPartiallyCurrent ? "text" : "pointer"
+        }
+      };
+    }}
+  />
+);
+
+export const TitleLink = props => (
+  <TitleItemLink
+    {...props}
+    getProps={({ isPartiallyCurrent }) => {
+      return {
+        style: {
+          textDecoration: isPartiallyCurrent ? "none" : "underline",
         }
       };
     }}
