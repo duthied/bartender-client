@@ -2,7 +2,7 @@ import React from "react";
 import styled from "react-emotion";
 
 import { unit } from "../styles";
-import { MenuContainer, NavLink } from "./menu-item-link";
+// import { MenuContainer, NavLink } from "./menu-item-link";
 
 const siteTitle = "Bartender";
 
@@ -12,10 +12,10 @@ export default function Header(props) {
       <div>
         <h2>{siteTitle}</h2>
       </div>
-      <MenuContainer>
+      {/* <MenuContainer>
         <NavLink to="/recipes">Recipes</NavLink>
         <NavLink to="/spirits">Spirits</NavLink>
-      </MenuContainer>
+      </MenuContainer> */}
     </Container>
   );
 }

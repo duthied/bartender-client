@@ -8,10 +8,12 @@ export const colors = {
   background: "#f7f8fa",
   grey: "#d8d9e0",
   lightGrey: "#ABB2B9",
+  darkGrey: "#74777A",
   text: "#343c5a",
   textSecondary: "#747790",
   inactive: "#ABB2B9",
-  active: "#000000"
+  active: "#000000",
+  black: "#000000"
 };
 
 export default () =>

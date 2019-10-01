@@ -10,14 +10,14 @@ export const listingTitleClassName = css({
   flexGrow: 1,
   width: 0,
   fontFamily: "inherit",
-  fontSize: 30,
+  fontSize: 35,
   fontWeight: "bold",
   letterSpacing: 1.5,
   textTransform: "uppercase",
   textAlign: "center",
-  color: "black"
+  // color: "black"
 });
 
-const TitleLink = styled(Link)(listingTitleClassName, {
+const TitleLink = styled("div")(listingTitleClassName, {
   textDecoration: "none"
 });

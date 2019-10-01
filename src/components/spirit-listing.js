@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import styled from "react-emotion";
+
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+
 import { unit, colors } from "../styles";
-
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-
 import ListingTitle from "./listing-title";
 
 const listingTitle = "Spirits";
@@ -30,32 +30,52 @@ export const GET_SPIRITS = gql`
 `;
 
 export default function SpiritListing() {
-  const { data, error } = useQuery(GET_SPIRITS);
-  if (error) return <p>ERROR</p>;
+  const { data, errors } = useQuery(GET_SPIRITS);
+  if (errors) 
+    errors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
 
   return (
     <Fragment>
       <Container>
         <ListingTitle to={listingTarget} title={listingTitle} />
-        {data.spirits &&
-        data.spirits.map(spirit => (
-          <h3>{spirit.name}</h3>
-        ))}
+        {
+          data.spirits && data.spirits.map(
+            spirit => 
+              <SpiritTile key={spirit.id}>
+                <SpiritTitle>{spirit.name}</SpiritTitle>
+                <SpiritBody>
+                  {spirit.type}<br />
+                  {spirit.howMuchLeft ? spirit.howMuchLeft : '0' }% left
+                </SpiritBody>
+              </SpiritTile>
+          )
+        }
       </Container>
     </Fragment>
   );
 }
 
+// TODO - refactor out
+const SpiritTile = styled("div")({
+  paddingBottom: unit * 5,
+});
+const SpiritTitle = styled("div")({
+  fontSize: 20,
+  fontWeight: 'bold',
+  color: colors.black
+});
+const SpiritBody = styled("div")({
+  fontSize: 15,
+  color: colors.darkGrey
+});
+// - end TODO
+
 const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
-  flexGrow: 1,
   width: "100%",
-  maxWidth: 500,
-  margin: "0 auto",
-  padding: unit * 3,
-  paddingBottom: unit * 5,
-  marginBottom: unit * 2,
-  marginRight: unit * 10,
-  backgroundColor: colors.secondary
 });
