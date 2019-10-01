@@ -4,8 +4,8 @@ import styled from "react-emotion";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import { unit, colors } from "../styles";
 import ListingTitle from "./listing-title";
+import { SpiritDetail } from "./spirit-detail";
 
 const listingTitle = "Spirits";
 const listingTarget = "spirits";
@@ -31,51 +31,26 @@ export const GET_SPIRITS = gql`
 
 export default function SpiritListing() {
   const { data, errors } = useQuery(GET_SPIRITS);
-  if (errors) 
+  if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      ),
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
     );
 
   return (
     <Fragment>
       <Container>
         <ListingTitle to={listingTarget} title={listingTitle} />
-        {
-          data.spirits && data.spirits.map(
-            spirit => 
-              <SpiritTile key={spirit.id}>
-                <SpiritTitle>{spirit.name}</SpiritTitle>
-                <SpiritBody>
-                  {spirit.type}<br />
-                  {spirit.howMuchLeft ? spirit.howMuchLeft : '0' }% left
-                </SpiritBody>
-              </SpiritTile>
-          )
-        }
+        {data.spirits &&
+          data.spirits.map(spirit => <SpiritDetail spirit={spirit} />)}
       </Container>
     </Fragment>
   );
 }
 
-// TODO - refactor out
-const SpiritTile = styled("div")({
-  paddingBottom: unit * 5,
-});
-const SpiritTitle = styled("div")({
-  fontSize: 20,
-  fontWeight: 'bold',
-  color: colors.black
-});
-const SpiritBody = styled("div")({
-  fontSize: 15,
-  color: colors.darkGrey
-});
-// - end TODO
-
 const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
-  width: "100%",
+  width: "100%"
 });

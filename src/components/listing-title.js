@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "react-emotion";
-import { Link } from "@reach/router";
+// import { Link } from "@reach/router";
 
 export default function ListingTitle(props) {
   return <TitleLink to={props.to}>{props.title}</TitleLink>;
@@ -14,7 +14,7 @@ export const listingTitleClassName = css({
   fontWeight: "bold",
   letterSpacing: 1.5,
   textTransform: "uppercase",
-  textAlign: "center",
+  textAlign: "center"
   // color: "black"
 });
 

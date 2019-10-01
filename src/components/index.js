@@ -4,3 +4,15 @@ export { default as RecipeListing } from "./recipe-listing";
 export { default as SpiritListing } from "./spirit-listing";
 export { default as PageContainer } from "./page-container";
 export { MenuContainer, NavLink } from "./menu-item-link";
+export {
+  SpiritDetail,
+  SpiritTile,
+  SpiritTitle,
+  SpiritBody
+} from "./spirit-detail";
+export {
+  RecipeDetail,
+  RecipeTile,
+  RecipeTitle,
+  RecipeBody
+} from "./recipe-detail";
