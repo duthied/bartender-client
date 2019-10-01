@@ -7,7 +7,7 @@ export default function ListingTitle(props) {
 }
 
 export const listingTitleClassName = css({
-  flexGrow: 1,
+  // flexGrow: 1,
   width: 0,
   fontFamily: "inherit",
   fontSize: 35,

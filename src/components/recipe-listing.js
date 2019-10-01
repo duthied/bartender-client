@@ -48,7 +48,7 @@ export default function RecipeListing() {
         <ListingTitle to={listingTarget} title={listingTitle} />
         {data.recipes &&
           data.recipes.map(recipe => (
-            <RecipeDetail  key={recipe.id} recipe={recipe} />
+            <RecipeDetail key={recipe.id} recipe={recipe} />
           ))}
       </Container>
     </Fragment>

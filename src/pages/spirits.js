@@ -38,7 +38,7 @@ export default function Spirits() {
   return (
     <Fragment>
       <Container>
-      {data.spirits &&
+        {data.spirits &&
           data.spirits.map(spirit => <SpiritDetail spirit={spirit} />)}
       </Container>
     </Fragment>
@@ -51,5 +51,5 @@ const Container = styled("div")({
   flexGrow: 2,
   justifyContent: "flex-start",
   width: "100%",
-  maxWidth: 400,
+  maxWidth: 400
 });

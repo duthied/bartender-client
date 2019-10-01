@@ -62,7 +62,7 @@ export const TitleLink = props => (
     getProps={({ isPartiallyCurrent }) => {
       return {
         style: {
-          textDecoration: isPartiallyCurrent ? "none" : "underline",
+          textDecoration: isPartiallyCurrent ? "none" : "underline"
         }
       };
     }}

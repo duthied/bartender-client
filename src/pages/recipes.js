@@ -41,10 +41,8 @@ export default function Recipes() {
   return (
     <Fragment>
       <Container>
-      {data.recipes &&
-          data.recipes.map(recipe => (
-            <RecipeDetail recipe={recipe} />
-          ))}
+        {data.recipes &&
+          data.recipes.map(recipe => <RecipeDetail recipe={recipe} />)}
       </Container>
     </Fragment>
   );
@@ -55,5 +53,5 @@ const Container = styled("div")({
   flexDirection: "row",
   flexGrow: 2,
   width: "100%",
-  maxWidth: 400,
+  maxWidth: 400
 });

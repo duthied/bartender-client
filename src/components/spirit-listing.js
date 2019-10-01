@@ -43,7 +43,9 @@ export default function SpiritListing() {
       <Container>
         <ListingTitle to={listingTarget} title={listingTitle} />
         {data.spirits &&
-          data.spirits.map(spirit => <SpiritDetail key={spirit.id} spirit={spirit} />)}
+          data.spirits.map(spirit => (
+            <SpiritDetail key={spirit.id} spirit={spirit} />
+          ))}
       </Container>
     </Fragment>
   );
@@ -52,5 +54,8 @@ export default function SpiritListing() {
 const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
+  // alignItems: "flex-start",
+  // justifyContent: "flex-start",
+  // alignItems: "flex-start",
   width: "100%"
 });

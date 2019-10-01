@@ -10,7 +10,9 @@ export default function Header(props) {
   return (
     <Container>
       <div>
-        <h2><TitleLink to="/">{siteTitle}</TitleLink></h2>
+        <h2>
+          <TitleLink to="/">{siteTitle}</TitleLink>
+        </h2>
       </div>
       <MenuContainer>
         <NavLink to="/recipes">Recipes</NavLink>
