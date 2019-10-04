@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "react-emotion";
 
-import { unit } from "../styles";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { RecipeDetail } from "../components/recipe-detail";

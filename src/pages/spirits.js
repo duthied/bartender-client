@@ -4,7 +4,6 @@ import styled from "react-emotion";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import { unit } from "../styles";
 import { SpiritDetail } from "../components/spirit-detail";
 
 export const SPIRIT_DATA = gql`

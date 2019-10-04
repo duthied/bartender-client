@@ -22,10 +22,10 @@ const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
   flexGrow: 1,
-  justifyContent: "flex-start",
+  alignItems: "flex-start",
   width: "100%",
   maxWidth: 800,
-  margin: "0 auto",
+  margin: unit * 4,
   padding: unit * 3,
   paddingBottom: unit * 5
 });

@@ -54,8 +54,5 @@ export default function SpiritListing() {
 const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
-  // alignItems: "flex-start",
-  // justifyContent: "flex-start",
-  // alignItems: "flex-start",
   width: "100%"
 });
