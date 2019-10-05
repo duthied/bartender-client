@@ -1,16 +1,25 @@
 import gql from "graphql-tag";
 
-export const SpiritItemSchema = gql`
-fragment SpiritItem on Spirit {
-  __typename
-  id
-  name
-  type
-  howMuchLeft
-}
+const SpiritItemSchema = gql`
+  fragment SpiritItem on Spirit {
+    __typename
+    id
+    name
+    type
+    howMuchLeft
+  }
 `;
 
-export const RecipeItemSchema = gql`
+export const GetSpiritsQuery = gql`
+  query GetSpiritList {
+    spirits {
+      ...SpiritItem
+    }
+  }
+  ${SpiritItemSchema}
+`;
+
+const RecipeItemSchema = gql`
   fragment RecipeItem on Recipe {
     __typename
     id
@@ -22,4 +31,13 @@ export const RecipeItemSchema = gql`
       }
     }
   }
+`;
+
+export const GetRecipesQuery = gql`
+  query getRecipeList {
+    recipes {
+      ...RecipeItem
+    }
+  }
+  ${RecipeItemSchema}
 `;

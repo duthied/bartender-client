@@ -2,39 +2,16 @@ import React, { Fragment } from "react";
 import styled from "react-emotion";
 
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import ListingTitle from "./listing-title";
 import { RecipeDetail } from "./recipe-detail";
+import { GetRecipesQuery } from "../schema";
 
 const listingTitle = "Recipes";
 const listingTarget = "recipes";
 
-export const RECIPE_DATA = gql`
-  fragment RecipeItem on Recipe {
-    __typename
-    id
-    name
-    glass
-    ingredients {
-      spirit {
-        name
-      }
-    }
-  }
-`;
-
-export const GET_RECIPES = gql`
-  query getRecipeList {
-    recipes {
-      ...RecipeItem
-    }
-  }
-  ${RECIPE_DATA}
-`;
-
 export default function RecipeListing() {
-  const { data, errors } = useQuery(GET_RECIPES);
+  const { data, errors } = useQuery(GetRecipesQuery);
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(

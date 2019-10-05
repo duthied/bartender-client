@@ -2,23 +2,13 @@ import React, { Fragment } from "react";
 import styled from "react-emotion";
 
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import { PageTitle } from "../components/page-title";
 import { RecipeDetail } from "../components/recipe-detail";
-import { RecipeItemSchema } from "../schema";
-
-export const GET_RECIPES = gql`
-  query getRecipeList {
-    recipes {
-      ...RecipeItem
-    }
-  }
-  ${RecipeItemSchema}
-`;
+import { GetRecipesQuery } from "../schema";
 
 export default function Recipes() {
-  const { data, errors } = useQuery(GET_RECIPES);
+  const { data, errors } = useQuery(GetRecipesQuery);
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(

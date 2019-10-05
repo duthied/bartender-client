@@ -2,26 +2,16 @@ import React, { Fragment } from "react";
 import styled from "react-emotion";
 
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import ListingTitle from "./listing-title";
 import { SpiritDetail } from "./spirit-detail";
-import { SpiritItemSchema } from "../schema";
+import { GetSpiritsQuery } from "../schema";
 
 const listingTitle = "Spirits";
 const listingTarget = "spirits";
 
-export const GET_SPIRITS = gql`
-  query GetSpiritList {
-    spirits {
-      ...SpiritItem
-    }
-  }
-  ${SpiritItemSchema}
-`;
-
 export default function SpiritListing() {
-  const { data, errors } = useQuery(GET_SPIRITS);
+  const { data, errors } = useQuery(GetSpiritsQuery);
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(
