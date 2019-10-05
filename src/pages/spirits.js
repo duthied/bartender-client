@@ -4,6 +4,7 @@ import styled from "react-emotion";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import { PageTitle } from "../components/page-title";
 import { SpiritDetail } from "../components/spirit-detail";
 
 export const SPIRIT_DATA = gql`
@@ -36,6 +37,7 @@ export default function Spirits() {
 
   return (
     <Fragment>
+      <PageTitle>Spirits</PageTitle>
       <Container>
         {data.spirits &&
           data.spirits.map(spirit => <SpiritDetail spirit={spirit} />)}

@@ -16,3 +16,4 @@ export {
   RecipeTitle,
   RecipeBody
 } from "./recipe-detail";
+export { PageTitle } from "./page-title";

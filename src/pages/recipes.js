@@ -3,6 +3,8 @@ import styled from "react-emotion";
 
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+
+import { PageTitle } from "../components/page-title";
 import { RecipeDetail } from "../components/recipe-detail";
 
 export const RECIPE_DATA = gql`
@@ -39,6 +41,7 @@ export default function Recipes() {
 
   return (
     <Fragment>
+      <PageTitle>Recipes</PageTitle>
       <Container>
         {data.recipes &&
           data.recipes.map(recipe => <RecipeDetail recipe={recipe} />)}
@@ -46,6 +49,7 @@ export default function Recipes() {
     </Fragment>
   );
 }
+
 
 const Container = styled("div")({
   display: "flex",
