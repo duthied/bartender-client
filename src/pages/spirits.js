@@ -7,15 +7,7 @@ import gql from "graphql-tag";
 import { PageTitle } from "../components/page-title";
 import { SpiritDetail } from "../components/spirit-detail";
 
-export const SPIRIT_DATA = gql`
-  fragment SpiritItem on Spirit {
-    __typename
-    id
-    name
-    type
-    howMuchLeft
-  }
-`;
+import { SpiritItemSchema } from "../schema";
 
 export const GET_SPIRITS = gql`
   query GetSpiritList {
@@ -23,7 +15,7 @@ export const GET_SPIRITS = gql`
       ...SpiritItem
     }
   }
-  ${SPIRIT_DATA}
+  ${SpiritItemSchema}
 `;
 
 export default function Spirits() {

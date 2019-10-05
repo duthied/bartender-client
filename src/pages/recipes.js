@@ -6,20 +6,7 @@ import gql from "graphql-tag";
 
 import { PageTitle } from "../components/page-title";
 import { RecipeDetail } from "../components/recipe-detail";
-
-export const RECIPE_DATA = gql`
-  fragment RecipeItem on Recipe {
-    __typename
-    id
-    name
-    glass
-    ingredients {
-      spirit {
-        name
-      }
-    }
-  }
-`;
+import { RecipeItemSchema } from "../schema";
 
 export const GET_RECIPES = gql`
   query getRecipeList {
@@ -27,7 +14,7 @@ export const GET_RECIPES = gql`
       ...RecipeItem
     }
   }
-  ${RECIPE_DATA}
+  ${RecipeItemSchema}
 `;
 
 export default function Recipes() {
@@ -49,7 +36,6 @@ export default function Recipes() {
     </Fragment>
   );
 }
-
 
 const Container = styled("div")({
   display: "flex",

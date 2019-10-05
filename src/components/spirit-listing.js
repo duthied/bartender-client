@@ -6,19 +6,10 @@ import gql from "graphql-tag";
 
 import ListingTitle from "./listing-title";
 import { SpiritDetail } from "./spirit-detail";
+import { SpiritItemSchema } from "../schema";
 
 const listingTitle = "Spirits";
 const listingTarget = "spirits";
-
-export const SPIRIT_DATA = gql`
-  fragment SpiritItem on Spirit {
-    __typename
-    id
-    name
-    type
-    howMuchLeft
-  }
-`;
 
 export const GET_SPIRITS = gql`
   query GetSpiritList {
@@ -26,7 +17,7 @@ export const GET_SPIRITS = gql`
       ...SpiritItem
     }
   }
-  ${SPIRIT_DATA}
+  ${SpiritItemSchema}
 `;
 
 export default function SpiritListing() {
