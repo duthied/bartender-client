@@ -28,7 +28,6 @@ export const GetSpiritQuery = gql`
       howMuchLeft
     }
   }
-  ${SpiritItemSchema}
 `;
 
 const RecipeItemSchema = gql`
@@ -67,5 +66,4 @@ export const GetRecipeQuery = gql`
       }
     }
   }
-  ${RecipeItemSchema}
 `;

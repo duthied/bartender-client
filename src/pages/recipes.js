@@ -8,7 +8,8 @@ import { RecipeDetail } from "../components/recipe-detail";
 import { GetRecipesQuery } from "../schema";
 
 export default function Recipes() {
-  const { data, errors } = useQuery(GetRecipesQuery);
+  const { data, loading, errors } = useQuery(GetRecipesQuery);
+  if (loading) return <div>...loading...</div>;
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(
@@ -21,7 +22,9 @@ export default function Recipes() {
       <PageTitle>Recipes</PageTitle>
       <Container>
         {data.recipes &&
-          data.recipes.map(recipe => <RecipeDetail key={recipe.id} recipe={recipe} />)}
+          data.recipes.map(recipe => (
+            <RecipeDetail key={recipe.id} recipe={recipe} />
+          ))}
       </Container>
     </Fragment>
   );

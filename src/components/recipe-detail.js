@@ -24,7 +24,6 @@ export function RecipeDetail({ recipe }) {
   );
 }
 
-
 export const RecipeTile = styled("div")({
   paddingBottom: unit * 5
 });
