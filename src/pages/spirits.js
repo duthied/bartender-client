@@ -22,7 +22,7 @@ export default function Spirits() {
       <PageTitle>Spirits</PageTitle>
       <Container>
         {data.spirits &&
-          data.spirits.map(spirit => <SpiritDetail spirit={spirit} />)}
+          data.spirits.map(spirit => <SpiritDetail key={spirit.id} spirit={spirit} />)}
       </Container>
     </Fragment>
   );

@@ -21,7 +21,7 @@ export default function Recipes() {
       <PageTitle>Recipes</PageTitle>
       <Container>
         {data.recipes &&
-          data.recipes.map(recipe => <RecipeDetail recipe={recipe} />)}
+          data.recipes.map(recipe => <RecipeDetail key={recipe.id} recipe={recipe} />)}
       </Container>
     </Fragment>
   );

@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "react-emotion";
+
+import { Link } from "@reach/router";
 import { unit, colors } from "../styles";
 
 export function SpiritDetail({ spirit }) {
   return (
     <SpiritTile key={spirit.id}>
-      <SpiritTitle>{spirit.name}</SpiritTitle>
+      <SpiritTitle to={`/spirit/${spirit.id}`}>{spirit.name}</SpiritTitle>
       <SpiritBody>
         {spirit.type}
         <br />
@@ -19,7 +21,7 @@ export const SpiritTile = styled("div")({
   paddingBottom: unit * 5
 });
 
-export const SpiritTitle = styled("div")({
+export const SpiritTitle = styled(Link)({
   fontSize: 20,
   fontWeight: "bold",
   color: colors.black

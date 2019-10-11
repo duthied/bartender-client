@@ -19,6 +19,18 @@ export const GetSpiritsQuery = gql`
   ${SpiritItemSchema}
 `;
 
+export const GetSpiritQuery = gql`
+  query getSpirit($spiritId: ID!) {
+    spirit(id: $spiritId) {
+      id
+      name
+      type
+      howMuchLeft
+    }
+  }
+  ${SpiritItemSchema}
+`;
+
 const RecipeItemSchema = gql`
   fragment RecipeItem on Recipe {
     __typename
@@ -37,6 +49,22 @@ export const GetRecipesQuery = gql`
   query getRecipeList {
     recipes {
       ...RecipeItem
+    }
+  }
+  ${RecipeItemSchema}
+`;
+
+export const GetRecipeQuery = gql`
+  query getRecipe($recipeId: ID!) {
+    recipe(id: $recipeId) {
+      id
+      name
+      glass
+      ingredients {
+        spirit {
+          name
+        }
+      }
     }
   }
   ${RecipeItemSchema}
