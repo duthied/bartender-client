@@ -9,14 +9,12 @@ import { SpiritDetail } from "../components/spirit-detail";
 import { GetSpiritQuery } from "../schema";
 
 export default function Spirits({ spiritId }) {
-
-  const { data, loading, errors } = useQuery(
-    GetSpiritQuery, 
-    { variables: { spiritId } }
-  );
+  const { data, loading, errors } = useQuery(GetSpiritQuery, {
+    variables: { spiritId }
+  });
   if (loading) return <div>...loading...</div>;
   if (errors) return <p>ERROR: {errors}</p>;
-  
+
   // console.log("spiritId:" + spiritId);
   // console.log("data:" + JSON.stringify(data));
 
@@ -24,7 +22,11 @@ export default function Spirits({ spiritId }) {
     <Fragment>
       <PageTitle>Spirits</PageTitle>
       <Container>
-      { data.spirit !== null ? <SpiritDetail key={data.spirit.key} spirit={data.spirit} /> : <div>Spirit not found with id: {spiritId}</div>}
+        {data.spirit !== null ? (
+          <SpiritDetail key={data.spirit.key} spirit={data.spirit} />
+        ) : (
+          <div>Spirit not found with id: {spiritId}</div>
+        )}
       </Container>
     </Fragment>
   );
