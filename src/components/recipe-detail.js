@@ -1,11 +1,13 @@
 import React, { Fragment } from "react";
 import styled from "react-emotion";
+import { Link } from "@reach/router";
+
 import { unit, colors } from "../styles";
 
 export function RecipeDetail({ recipe }) {
   return (
     <RecipeTile key={recipe.id}>
-      <RecipeTitle>{recipe.name}</RecipeTitle>
+      <RecipeTitle to={`/recipe/${recipe.id}`}>{recipe.name}</RecipeTitle>
       <RecipeBody>
         Spirits:
         <Ingredients>
@@ -22,12 +24,11 @@ export function RecipeDetail({ recipe }) {
   );
 }
 
-// TODO - refactor out
 export const RecipeTile = styled("div")({
   paddingBottom: unit * 5
 });
 
-export const RecipeTitle = styled("div")({
+export const RecipeTitle = styled(Link)({
   fontSize: 20,
   fontWeight: "bold",
   color: colors.black
@@ -42,4 +43,3 @@ export const Ingredients = styled("div")({
   paddingLeft: unit * 1,
   marginBottom: unit * 1
 });
-// - end TODO

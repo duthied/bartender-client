@@ -9,7 +9,8 @@ import { SpiritDetail } from "../components/spirit-detail";
 import { GetSpiritsQuery } from "../schema";
 
 export default function Spirits() {
-  const { data, errors } = useQuery(GetSpiritsQuery);
+  const { data, loading, errors } = useQuery(GetSpiritsQuery);
+  if (loading) return <div>...loading...</div>;
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(
@@ -22,7 +23,9 @@ export default function Spirits() {
       <PageTitle>Spirits</PageTitle>
       <Container>
         {data.spirits &&
-          data.spirits.map(spirit => <SpiritDetail spirit={spirit} />)}
+          data.spirits.map(spirit => (
+            <SpiritDetail key={spirit.id} spirit={spirit} />
+          ))}
       </Container>
     </Fragment>
   );

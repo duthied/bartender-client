@@ -11,7 +11,8 @@ const listingTitle = "Spirits";
 const listingTarget = "spirits";
 
 export default function SpiritListing() {
-  const { data, errors } = useQuery(GetSpiritsQuery);
+  const { data, loading, errors } = useQuery(GetSpiritsQuery);
+  if (loading) return <div>...loading...</div>;
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(
@@ -25,7 +26,11 @@ export default function SpiritListing() {
         <ListingTitle to={listingTarget} title={listingTitle} />
         {data.spirits &&
           data.spirits.map(spirit => (
-            <SpiritDetail key={spirit.id} spirit={spirit} />
+            <SpiritDetail
+              to="/spirit&id={spirit.id}"
+              key={spirit.id}
+              spirit={spirit}
+            />
           ))}
       </Container>
     </Fragment>

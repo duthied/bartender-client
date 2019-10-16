@@ -11,7 +11,8 @@ const listingTitle = "Recipes";
 const listingTarget = "recipes";
 
 export default function RecipeListing() {
-  const { data, errors } = useQuery(GetRecipesQuery);
+  const { data, loading, errors } = useQuery(GetRecipesQuery);
+  if (loading) return <div>...loading...</div>;
   if (errors)
     errors.map(({ message, locations, path }) =>
       console.log(
