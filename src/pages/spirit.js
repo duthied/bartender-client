@@ -12,7 +12,7 @@ export default function Spirits({ spiritId }) {
   const { data, loading, errors } = useQuery(GetSpiritQuery, {
     variables: { spiritId }
   });
-  
+
   if (loading) return <div>...loading...</div>;
   if (errors) return <p>ERROR: {errors}</p>;
 

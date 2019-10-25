@@ -24,55 +24,58 @@ export function SpiritDetail({ spirit }) {
 
 export function SpiritForm({ id, name, type, howMuchLeft }) {
   // eslint-disable-next-line no-unused-vars
-  let spiritName, spiritType, spiritHowMuchLeft;
+  // let spiritName, spiritType, spiritHowMuchLeft;
 
   const [nameInput, setNameInput] = useState(name);
   const [typeInput, setTypeInput] = useState(type);
   const [howMuchLeftInput, setHowMuchLeftInput] = useState(howMuchLeft);
 
-  const [mutate, { loading, errors }] = useMutation( EditSpirit, { update: GetSpiritQuery } );
+  const [mutate, { loading, errors }] = useMutation(EditSpirit, {
+    refetchQueries: ["GetSpiritQuery"]
+  });
 
   if (loading) return <div>...loading...</div>;
   if (errors) return <p>ERROR: {errors}</p>;
 
   return (
     <div>
-      <form className="formInput" onSubmit={(e) => {
-          e.preventDefault();
-          mutate({ variables: { 
-            id: id, 
-            name: nameInput, 
-            type: typeInput,
-            howMuchLeft: howMuchLeftInput
-          } });
-          }}>
+        <input
+          className="inputName"
+          value={nameInput}
+          placeholder="the spirit's name"
+          onChange={e => setNameInput(e.target.value)}
+          // ref={n => (spiritName = n)}
+        />
+        <input
+          className="inputType"
+          value={typeInput}
+          placeholder="what type?"
+          onChange={e => setTypeInput(e.target.value)}
+          // ref={n => (spiritType = n)}
+        />
+        <input
+          className="inputHML"
+          value={howMuchLeftInput}
+          placeholder="how much is left? (%)"
+          onChange={e => setHowMuchLeftInput(e.target.value)}
+          // ref={n => (spiritHowMuchLeft = n)}
+        />
 
-      <input
-        value={nameInput} 
-        placeholder="the spirit's name"
-        onChange={ e => (setNameInput(e.target.value)) }
-        ref={ n => (spiritName = n) }
-      />
-      <input
-        value={typeInput} 
-        placeholder="what type?"
-        onChange={ e => (setTypeInput(e.target.value)) }
-        ref={ n => (spiritType = n) }
-      />
-      <input
-        value={howMuchLeftInput} 
-        placeholder="how much is left? (%)"
-        onChange={ e => (setHowMuchLeftInput(e.target.value)) }
-        ref={ n => (spiritHowMuchLeft = n) }
-      />
-      
-      </form>
-      {/* <button>submit</button> */}
+      <button
+        onClick={() => {
+          mutate({
+            variables: {
+              id: id,
+              name: nameInput,
+              type: typeInput,
+              howMuchLeft: howMuchLeftInput
+            }
+          })
+        }}
+      >save</button>
     </div>
   );
-};
-
-
+}
 
 export const SpiritTile = styled("div")({
   paddingBottom: unit * 5,
@@ -89,7 +92,6 @@ export const SpiritBody = styled("div")({
   fontSize: 15,
   color: colors.darkGrey
 });
-
 
 // const height = 50;
 // const Button = styled('button')({

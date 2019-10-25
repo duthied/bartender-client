@@ -31,7 +31,12 @@ export const GetSpiritQuery = gql`
 `;
 
 export const EditSpirit = gql`
-  mutation editSpirit($id: ID!, $name: String!, $type: SpiritType!, $howMuchLeft: String!) {
+  mutation editSpirit(
+    $id: ID!
+    $name: String!
+    $type: SpiritType!
+    $howMuchLeft: String!
+  ) {
     editSpirit(id: $id, name: $name, type: $type, howMuchLeft: $howMuchLeft) {
       name
       id
