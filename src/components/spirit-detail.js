@@ -80,7 +80,8 @@ export function SpiritForm({ id, name, type, howMuchLeft }) {
 }
 
 export const SpiritTile = styled("div")({
-  paddingBottom: unit * 5
+  paddingBottom: unit * 5,
+  marginRight: unit * 2
 });
 
 export const SpiritTitle = styled(Link)({
