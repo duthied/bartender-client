@@ -20,7 +20,7 @@ export default function Recipe({ recipeId }) {
     <Fragment>
       <PageTitle>Recipes</PageTitle>
       <Container>
-        {data.recipe !== null ? (
+        {data && data.recipe ? (
           <RecipeDetail key={data.recipe.id} recipe={data.recipe} />
         ) : (
           <div>Recipe not found with id: {recipeId}</div>

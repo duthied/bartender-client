@@ -8,7 +8,8 @@ export {
   SpiritDetail,
   SpiritTile,
   SpiritTitle,
-  SpiritBody
+  SpiritBody,
+  SpiritForm
 } from "./spirit-detail";
 export {
   RecipeDetail,

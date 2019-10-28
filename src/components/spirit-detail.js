@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "react-emotion";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 
 import { Link } from "@reach/router";
 import { unit, colors } from "../styles";
+
+// eslint-disable-next-line no-unused-vars
+import { EditSpirit, GetSpiritQuery, GetSpiritTypesQuery } from "../schema";
 
 export function SpiritDetail({ spirit }) {
   return (
@@ -17,8 +21,72 @@ export function SpiritDetail({ spirit }) {
   );
 }
 
+export function SpiritForm({ id, name, type, howMuchLeft }) {
+  const [nameInput, setNameInput] = useState(name);
+  const [typeInput, setTypeInput] = useState(type);
+  const [howMuchLeftInput, setHowMuchLeftInput] = useState(howMuchLeft);
+
+  const [mutate, { loading, errors }] = useMutation(EditSpirit, {
+    refetchQueries: ["GetSpiritQuery"]
+  });
+
+  const { data } = useQuery(GetSpiritTypesQuery);
+
+  if (loading) return <div>...loading...</div>;
+  if (errors) return <p>ERROR: {errors}</p>;
+
+  return (
+    <div>
+      <input
+        className="inputName"
+        value={nameInput}
+        placeholder="the spirit's name"
+        onChange={e => setNameInput(e.target.value)}
+      />
+      
+      {data && data.__type ? (
+        <select
+          onChange={e => setTypeInput(e.target.value)}
+          value={typeInput}
+        >
+          {data.__type.enumValues.map(enumValue => (
+            <option
+              value={enumValue.name}
+            >{enumValue.name}</option>
+          ))}   
+        </select>
+      ) : (
+        <select></select>
+      )}
+
+      <input
+        className="inputHML"
+        value={howMuchLeftInput}
+        placeholder="how much is left? (%)"
+        onChange={e => setHowMuchLeftInput(e.target.value)}
+      />
+
+      <button
+        onClick={() => {
+          mutate({
+            variables: {
+              id: id,
+              name: nameInput,
+              type: typeInput,
+              howMuchLeft: howMuchLeftInput
+            }
+          });
+        }}
+      >
+        save
+      </button>
+    </div>
+  );
+}
+
 export const SpiritTile = styled("div")({
-  paddingBottom: unit * 5
+  paddingBottom: unit * 5,
+  marginRight: unit * 2
 });
 
 export const SpiritTitle = styled(Link)({
@@ -31,3 +99,29 @@ export const SpiritBody = styled("div")({
   fontSize: 15,
   color: colors.darkGrey
 });
+
+// const height = 50;
+// const Button = styled('button')({
+//   display: 'block',
+//   minWidth: 200,
+//   height: 50,
+//   margin: '0 auto',
+//   padding: `0 ${unit * 4}px`,
+//   border: 'none',
+//   borderRadius: height / 2,
+//   fontFamily: 'inherit',
+//   fontSize: 18,
+//   lineHeight: `${height}px`,
+//   fontWeight: 700,
+//   color: 'white',
+//   textTransform: 'uppercase',
+//   backgroundColor: colors.accent,
+//   cursor: 'pointer',
+//   outline: 'none',
+//   ':hover': {
+//     backgroundColor: lighten(0.1, colors.accent),
+//   },
+//   ':active': {
+//     backgroundColor: lighten(0.2, colors.accent),
+//   },
+// });

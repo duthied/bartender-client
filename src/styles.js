@@ -4,7 +4,7 @@ export const unit = 8;
 export const colors = {
   primary: "#085A7C",
   secondary: "#B7E8FB",
-  accent: "#CAB7FB",
+  accent: "#5DA8F4",
   background: "#f7f8fa",
   grey: "#d8d9e0",
   lightGrey: "#ABB2B9",

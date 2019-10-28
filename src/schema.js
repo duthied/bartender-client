@@ -30,6 +30,22 @@ export const GetSpiritQuery = gql`
   }
 `;
 
+export const EditSpirit = gql`
+  mutation editSpirit(
+    $id: ID!
+    $name: String!
+    $type: SpiritType!
+    $howMuchLeft: String!
+  ) {
+    editSpirit(id: $id, name: $name, type: $type, howMuchLeft: $howMuchLeft) {
+      name
+      id
+      type
+      howMuchLeft
+    }
+  }
+`;
+
 const RecipeItemSchema = gql`
   fragment RecipeItem on Recipe {
     __typename
@@ -67,3 +83,13 @@ export const GetRecipeQuery = gql`
     }
   }
 `;
+
+export const GetSpiritTypesQuery = gql`
+  query GetEnum {
+    __type(name: "SpiritType") {
+      enumValues {
+        name
+      }
+    }
+  }
+`
