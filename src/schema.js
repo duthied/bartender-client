@@ -83,3 +83,13 @@ export const GetRecipeQuery = gql`
     }
   }
 `;
+
+export const GetSpiritTypesQuery = gql`
+  query GetEnum {
+    __type(name: "SpiritType") {
+      enumValues {
+        name
+      }
+    }
+  }
+`

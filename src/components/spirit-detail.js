@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styled from "react-emotion";
-// import { lighten } from 'polished';
-
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 
 import { Link } from "@reach/router";
 import { unit, colors } from "../styles";
 
-import { EditSpirit, GetSpiritQuery } from "../schema";
+// eslint-disable-next-line no-unused-vars
+import { EditSpirit, GetSpiritQuery, GetSpiritTypesQuery } from "../schema";
 
 export function SpiritDetail({ spirit }) {
   return (
@@ -23,9 +22,6 @@ export function SpiritDetail({ spirit }) {
 }
 
 export function SpiritForm({ id, name, type, howMuchLeft }) {
-  // eslint-disable-next-line no-unused-vars
-  // let spiritName, spiritType, spiritHowMuchLeft;
-
   const [nameInput, setNameInput] = useState(name);
   const [typeInput, setTypeInput] = useState(type);
   const [howMuchLeftInput, setHowMuchLeftInput] = useState(howMuchLeft);
@@ -34,32 +30,41 @@ export function SpiritForm({ id, name, type, howMuchLeft }) {
     refetchQueries: ["GetSpiritQuery"]
   });
 
+  const { data } = useQuery(GetSpiritTypesQuery);
+
   if (loading) return <div>...loading...</div>;
   if (errors) return <p>ERROR: {errors}</p>;
 
   return (
     <div>
-        <input
-          className="inputName"
-          value={nameInput}
-          placeholder="the spirit's name"
-          onChange={e => setNameInput(e.target.value)}
-          // ref={n => (spiritName = n)}
-        />
-        <input
-          className="inputType"
-          value={typeInput}
-          placeholder="what type?"
+      <input
+        className="inputName"
+        value={nameInput}
+        placeholder="the spirit's name"
+        onChange={e => setNameInput(e.target.value)}
+      />
+      
+      {data && data.__type ? (
+        <select
           onChange={e => setTypeInput(e.target.value)}
-          // ref={n => (spiritType = n)}
-        />
-        <input
-          className="inputHML"
-          value={howMuchLeftInput}
-          placeholder="how much is left? (%)"
-          onChange={e => setHowMuchLeftInput(e.target.value)}
-          // ref={n => (spiritHowMuchLeft = n)}
-        />
+          value={typeInput}
+        >
+          {data.__type.enumValues.map(enumValue => (
+            <option
+              value={enumValue.name}
+            >{enumValue.name}</option>
+          ))}   
+        </select>
+      ) : (
+        <select></select>
+      )}
+
+      <input
+        className="inputHML"
+        value={howMuchLeftInput}
+        placeholder="how much is left? (%)"
+        onChange={e => setHowMuchLeftInput(e.target.value)}
+      />
 
       <button
         onClick={() => {
@@ -70,9 +75,11 @@ export function SpiritForm({ id, name, type, howMuchLeft }) {
               type: typeInput,
               howMuchLeft: howMuchLeftInput
             }
-          })
+          });
         }}
-      >save</button>
+      >
+        save
+      </button>
     </div>
   );
 }
